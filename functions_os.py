@@ -44,6 +44,13 @@ def is_path_exists_or_creatable(path):
     except OSError:
         return False
 
+def delete_non_creatable_symbols(string):
+    valid = ''
+    for i in range(len(string)):
+        if not string[i] in ['/', '\\', ':', '*', '?', '"', '<', '>', '|']:
+            valid += string[i]
+    return valid
+
 def asked_path():
     download_path = ''
     use_json = False
@@ -84,4 +91,4 @@ def asked_path():
                 json.dump(saved_path, f)
                 f.close()
 
-    return download_path
+    return download_path.rstrip(os.path.sep) + os.path.sep

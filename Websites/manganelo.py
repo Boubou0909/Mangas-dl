@@ -1,10 +1,10 @@
 import os
-from shutil import rmtree
-from requests_html import HTML, HTMLSession
+from requests_html import HTMLSession
 from PIL import Image
 
 from .functions_web import page_exists, download_image
 from .functions import delete_duplicate, delete_non_numeric
+from .download_and_convert import download_and_convert
 
 def nb_chp_manganelo(url):
     if not page_exists(url):
@@ -46,7 +46,6 @@ def nb_chp_manganelo(url):
     return chapters, chapters_to_save, manga_name
 
 def download_manganelo_tv(url, to_save, download_path, manga_name):
-    download_path = download_path.rstrip(os.path.sep) + os.path.sep
     if not os.path.exists(download_path + manga_name + os.path.sep):
         os.makedirs(download_path + manga_name + os.path.sep)
     download_path = download_path + manga_name + os.path.sep
@@ -65,17 +64,33 @@ def download_manganelo_tv(url, to_save, download_path, manga_name):
         
         r = session.get(url_chapter + chp_nb[0])
         images = r.html.find('.img-loading')
+        src = [images[i].attrs['data-src'] for i in range(len(images))]
 
-        img_list = []
-        for j in range(len(images)):
-            src = images[j].attrs['data-src']
-            ext = src.split('.')[-1]
+        download_and_convert(src, download_path, chp_nb)
 
-            download_image(src, download_path + 'temp' + os.path.sep, 'chp_' + chp_nb[1] + '_' + str(j) + '.' + ext)
-            img_list.append(Image.open(download_path + 'temp' + os.path.sep + 'chp_' + chp_nb[1] + '_' + str(j) + '.' + ext).convert('RGB'))
+def download_manganelo_com(url, to_save, download_path, manga_name):
+    if not os.path.exists(download_path + manga_name + os.path.sep):
+        os.makedirs(download_path + manga_name + os.path.sep)
+    download_path = download_path + manga_name + os.path.sep
+    session = HTMLSession()
 
-        if len(img_list) > 0:
-            image = img_list.pop(0)
-            image.save(download_path + 'chp_' + chp_nb[1] + '.pdf', save_all=True, append_images=img_list)
+    url_chapter = url.split('/')
+    url_chapter.append('chapter_')
+    url_chapter[-3] = 'chapter'
+    url_chapter = '/'.join(url_chapter)
 
-        rmtree(download_path + 'temp' + os.path.sep)
+    for chp_nb in to_save:
+        print('Loading chapter ', chp_nb[0])
+
+        if not os.path.exists(download_path + 'temp' + os.path.sep):
+            os.makedirs(download_path + 'temp' + os.path.sep)
+        
+        r = session.get(url_chapter + chp_nb[0])
+        div = r.html.find('.container-chapter-reader')[0].html.split("=")
+        
+        src = []
+        for i in range(len(div)):
+            if 'src' in div[i] and 'https://' in div[i+1]:
+                src.append(div[i+1].split('"')[1])
+
+        download_and_convert(src, download_path, chp_nb, referer=url_chapter)
