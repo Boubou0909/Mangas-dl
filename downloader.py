@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import website_function
 
 launch_functions = {
