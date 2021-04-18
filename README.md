@@ -1,2 +1,2 @@
-This is a README.
+This is a good README.
 Please do not hit it.
