@@ -1,6 +1,6 @@
+import sys
 import os
 from requests_html import HTMLSession
-from PIL import Image
 
 from .functions_web import page_exists, download_image
 from .functions import delete_duplicate, delete_non_numeric
@@ -30,12 +30,14 @@ def nb_chp_manganelo(url):
     chapters_to_save = []
     for i in range(len(pre_chapters)-2, -1, -1):
         if 'Chapter' in pre_chapters[i]:
-            chapters.append(delete_non_numeric(pre_chapters[i+1].split('\n')[0]))
-            
+            test = delete_non_numeric(pre_chapters[i+1].split('\n')[0])
+            if not test in ['.', '']:
+                chapters.append(test)
+
     chapters = delete_duplicate(chapters)
     for i in range(len(chapters)):
         chapters_to_save.append(chapters[i])
-        if ':' in chapters_to_save[-1][-1]:
+        if ':' in chapters_to_save[-1]:
             chapters_to_save[-1] = chapters_to_save[-1][:-1]
 
         if not '.' in chapters_to_save[-1]:
@@ -57,7 +59,8 @@ def download_manganelo_tv(url, to_save, download_path, manga_name):
     url_chapter = '/'.join(url_chapter)
 
     for chp_nb in to_save:
-        print('Loading chapter ', chp_nb[0])
+        sys.stdout.write('\033[K')
+        print('Loading chapter ', chp_nb[0], end='\r')
 
         if not os.path.exists(download_path + 'temp' + os.path.sep):
             os.makedirs(download_path + 'temp' + os.path.sep)
@@ -80,7 +83,8 @@ def download_manganelo_com(url, to_save, download_path, manga_name):
     url_chapter = '/'.join(url_chapter)
 
     for chp_nb in to_save:
-        print('Loading chapter ', chp_nb[0])
+        sys.stdout.write('\033[K')
+        print('Loading chapter ', chp_nb[0], end='\r')
 
         if not os.path.exists(download_path + 'temp' + os.path.sep):
             os.makedirs(download_path + 'temp' + os.path.sep)

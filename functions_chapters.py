@@ -1,8 +1,8 @@
 def asked_chapters(chapters, chapters_to_save, ask_to_save):
     to_save = []
     
-    if ask_to_save == '' or ask_to_save == '-1':
-        to_save = (chapters[:], chapters_to_save[:])
+    if ask_to_save in ['', '-1', '*']:
+        to_save = [(chapters[i], chapters_to_save[i]) for i in range(len(chapters))]
     else:
         for list in ask_to_save.split('/'):
             try:
@@ -28,7 +28,7 @@ def asked_chapters(chapters, chapters_to_save, ask_to_save):
 
             for i in range(indice_begining, indice_ending + 1):
                 to_save.append((chapters[i],chapters_to_save[i]))
-    
+
     return to_save
 
 def couples_of_chapters(to_save):

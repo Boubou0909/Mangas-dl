@@ -16,8 +16,9 @@ def manganelo_tv(url):
     pre_to_save = functions_chapters.asked_chapters(chapters, chapters_to_save, ask_to_save)
     if isinstance(pre_to_save, str):
         return pre_to_save
+
     to_save = functions_chapters.couples_of_chapters(pre_to_save)
-    
+
     download_path = functions_os.asked_path()
     if isinstance(download_path, list):
         return download_path[0]
@@ -37,6 +38,7 @@ def manganelo_com(url):
     pre_to_save = functions_chapters.asked_chapters(chapters, chapters_to_save, ask_to_save)
     if isinstance(pre_to_save, str):
         return pre_to_save
+
     to_save = functions_chapters.couples_of_chapters(pre_to_save)
 
     download_path = functions_os.asked_path()
