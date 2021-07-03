@@ -1,0 +1,12 @@
+{
+    "manganelo.tv" : 
+    {
+        "pre_download" : "manganelo_pre_download",
+        "download_chapters" : "manganelotv"
+    },
+    "manganelo.com" : 
+    {
+        "pre_download" : "manganelo_pre_download",
+        "download_chapters" : "manganelocom"
+    }
+}
