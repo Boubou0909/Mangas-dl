@@ -5,7 +5,7 @@ import pre_download_functions
 import download_chapters_functions
 
 from Headers.functions_web import does_page_exists
-from Headers.errors import UnknownWebsiteError, InputError, OSError
+from Headers.errors import UnknownWebsiteError, InputError, OSError, ConnexionError
 from Headers.functions import ask_until_y_or_n
 from Headers.functions_os import is_path_exists_or_creatable
 
@@ -37,12 +37,16 @@ class Mangas_dl:
         if not self.site_name in KNOWN_WEBSITES:
             raise UnknownWebsiteError(self.site_name)
         
+        if not does_page_exists(self.url):
+            raise ConnexionError(self.url)
+
         self.chapters, self.chapters_name, self.manga_name = getattr(pre_download_functions, LAUNCH_FUNCTIONS[self.site_name]["pre_download"])(self.url)
 
     def ask_chapters_to_download(self):
         if not hasattr(self, "chapters") or not hasattr(self, "chapters_name"):
             raise Exception("No idea how you arrived here.")
 
+        print(len(self.chapters), "chapters have been found (from " + self.chapters_name[0] + " to " + self.chapters_name[-1] + ").")
         chapters_asked = input('Which chapter(s) would you like to download ? ')
 
         pre_chapter_asked = []
@@ -56,12 +60,21 @@ class Mangas_dl:
                     raise InputError()
                 
                 try:
+                    indice_begining = self.chapters_name.index(begin)
+                    indice_ending = self.chapters_name.index(end)
+                except:
+                    pass
+
+                try:
                     indice_begining = self.chapters.index(begin)
                     indice_ending = self.chapters.index(end)
                 except:
+                    pass
+                
+                if not "indice_begining" in locals():
                     raise InputError("At least one of the chapter(s) asked doesn't exist.")
 
-                if float(end) == int(end):
+                if len(str(end).split('.')) > 1:
                     k = 0.1
                     while k < 1:
                         try:

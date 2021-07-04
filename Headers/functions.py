@@ -15,3 +15,9 @@ def delete_non_numeric(string):
         if string[i].isnumeric() or string[i] == '.':
             valid += string[i]
     return valid
+
+def str_at_least_n(i, n):
+    nb = str(i)
+    while len(nb) < n:
+        nb = "0" + nb
+    return nb

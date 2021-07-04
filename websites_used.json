@@ -2,11 +2,16 @@
     "manganelo.tv" : 
     {
         "pre_download" : "manganelo_pre_download",
-        "download_chapters" : "manganelotv"
+        "download_chapters" : "download_manganelo_tv"
     },
     "manganelo.com" : 
     {
         "pre_download" : "manganelo_pre_download",
-        "download_chapters" : "manganelocom"
+        "download_chapters" : "download_manganelo_com"
+    },
+    "mangadex.org" :
+    {
+        "pre_download" : "mangadex_pre_download",
+        "download_chapters" : "download_mangadex_org"
     }
 }

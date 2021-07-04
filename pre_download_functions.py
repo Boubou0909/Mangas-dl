@@ -1,14 +1,19 @@
-import os
 from requests_html import HTMLSession
+import json
+
+import MangaDexPy
 
 from Headers.functions_web import does_page_exists
 from Headers.errors import ConnexionError
 from Headers.functions import delete_non_numeric, delete_duplicate
 
-def manganelo_pre_download(url):
-    if not does_page_exists(url):
-        raise ConnexionError(url)
+try:
+    with open("language_codes.json") as file:
+        LANGUAGE_CODES = json.load(file)
+except:
+    raise FileNotFoundError("The file websites_used.json has not been found.\nPlease make sure it exists before lauching mangas-dl.")
 
+def manganelo_pre_download(url):
     session = HTMLSession()
     r = session.get(url)
     manga_name = r.html.find('h1')[0].html[4:-5]
@@ -45,3 +50,27 @@ def manganelo_pre_download(url):
             chapters_name[-1] = '0' + chapters_name[-1]
 
     return chapters, chapters_name, manga_name
+
+def mangadex_pre_download(url):
+    mangadex_client = MangaDexPy.MangaDex()
+    manga = mangadex_client.get_manga(url.split('/')[-1])
+    all_languages_chapters = manga.get_chapters()
+
+    available_languages = delete_duplicate([chp.language for chp in all_languages_chapters])
+    choosen_language = -1
+    if len(available_languages) == 1:
+        choosen_language = 0
+    else:
+        print(len(available_languages), "languages have been found.")
+        for i in range(len(available_languages)):
+            print(i, "->", LANGUAGE_CODES[available_languages[i]])
+        while choosen_language == -1:
+            choosen_language = available_languages[int(input("Choose a language (number) : "))]
+
+    chapters = [chp for chp in all_languages_chapters if chp.language == choosen_language]
+    chapters_name = [chp.chapter for chp in chapters]
+
+    chapters = [chp for _, chp in sorted(zip(list(map(float, chapters_name)), chapters), key=lambda pair : pair[0])]
+    chapters_name = list(map(str, list(sorted(map(float, chapters_name)))))
+
+    return chapters, chapters_name, manga.title["en"]

@@ -40,3 +40,9 @@ def is_path_exists_or_creatable(path):
         return is_pathname_valid(path) and (os.path.exists(path) or is_path_creatable(path))
     except OSError:
         return False
+
+def disable_print():
+    sys.stdout = open(os.devnull, 'w')
+
+def enable_print():
+    sys.stdout = sys.__stdout__
