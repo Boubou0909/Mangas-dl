@@ -63,12 +63,32 @@ def mangadex_pre_download(url):
     else:
         print(len(available_languages), "languages have been found.")
         for i in range(len(available_languages)):
-            print(i, "->", LANGUAGE_CODES[available_languages[i]])
+            try:
+                print(i, "->", LANGUAGE_CODES[available_languages[i]])
+            except:
+                print(i, "->", available_languages[i])
         while choosen_language == -1:
             choosen_language = available_languages[int(input("Choose a language (number) : "))]
 
     chapters = [chp for chp in all_languages_chapters if chp.language == choosen_language]
     chapters_name = [chp.chapter for chp in chapters]
+
+    i = 0
+    while i < len(chapters_name):
+        j = i + 1
+
+        if chapters_name[i] == None:
+            chapters_name.pop(i)
+            chapters.pop(i)
+            i -= 1
+        else:
+            while j < len(chapters_name):
+                if chapters_name[i] == chapters_name[j]:
+                    chapters_name.pop(j)
+                    chapters.pop(j)
+                    j -= 1
+                j += 1
+        i += 1
 
     chapters = [chp for _, chp in sorted(zip(list(map(float, chapters_name)), chapters), key=lambda pair : pair[0])]
     chapters_name = list(map(str, list(sorted(map(float, chapters_name)))))

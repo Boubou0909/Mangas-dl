@@ -82,7 +82,7 @@ def download_mangadex_org(url, chapters_asked, download_path, manga_name):
 
         img_list = []
         for i in range(len(chp_src.pages)):
-            img_list.append(Image.open(download_path + 'temp' + os.path.sep + str_at_least_n(i + 1, 2) + '.' + extensions[i]).convert('RGB'))
+            img_list.append(Image.open(download_path + 'temp' + os.path.sep + str_at_least_n(i + 1, len(str(len(chp_src.pages)))) + '.' + extensions[i]).convert('RGB'))
 
         convert_to_pdf(img_list, download_path + 'chp_' + chp_nb + '.pdf')
 

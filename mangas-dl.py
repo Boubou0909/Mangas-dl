@@ -1,4 +1,4 @@
-from mangas_dl import Mangas_dl
+from mangas_dl_class import Mangas_dl
 
 from Headers.errors import ConnexionError
 
