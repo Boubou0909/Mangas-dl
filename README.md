@@ -29,7 +29,19 @@ In the interactive mode, you will have to answer questions to specify what you w
 - **Destination folder** : Give the absolute path to the folder where the scans will be located. A new folder will be created inside with the name of the manga.
 - **Y/N questions** : Answer with 'Y'/'y'/1 or 'N'/'n'/0
 
+# List of websites staken in charge
+
+- [https://mangadex.org/] 
+- [https://manganelo.tv/]
+
 # Examples
+
+## Example of mangas' main page
+
+- mangadex.org : [https://mangadex.org/title/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0]
+- manganelo.tv : [https://manganelo.tv/manga/manga-dr980474]
+
+## Example of interactive-mode command
 
     > mangas-dl
     Enter the main page of the manga you want to download : https://mangadex.org/title/a96676e5-8ae2-425e-b549-7f15dd34a6d8
@@ -40,11 +52,11 @@ In the interactive mode, you will have to answer questions to specify what you w
     3 -> Russian
     4 -> Portuguese (Brasil)
     5 -> English
-    6 -> tl
-    7 -> fa
-    8 -> nl
-    9 -> mn
-    10 -> Chinese
+    6 -> Filipino
+    7 -> Persian
+    8 -> Dutch
+    9 -> Mongolian
+    10 -> Czech
     11 -> Hungarian
     12 -> Spanish (LATAM)
     13 -> French
