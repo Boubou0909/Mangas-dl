@@ -31,15 +31,15 @@ In the interactive mode, you will have to answer questions to specify what you w
 
 # List of websites staken in charge
 
-- [https://mangadex.org/] 
-- [https://manganelo.tv/]
+- [https://mangadex.org/]()
+- [https://manganelo.tv/]()
 
 # Examples
 
 ## Example of mangas' main page
 
-- mangadex.org : [https://mangadex.org/title/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0]
-- manganelo.tv : [https://manganelo.tv/manga/manga-dr980474]
+- mangadex.org : [https://mangadex.org/title/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0]()
+- manganelo.tv : [https://manganelo.tv/manga/manga-dr980474]()
 
 ## Example of interactive-mode command
 
