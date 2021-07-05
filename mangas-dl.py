@@ -1,3 +1,5 @@
+# pyinstaller --onefile run.py --copy-metadata pyppeteer
+
 from mangas_dl_class import Mangas_dl
 
 from Headers.errors import ConnexionError
