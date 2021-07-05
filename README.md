@@ -9,7 +9,7 @@ However, it's not convenient, so other ways of installation will be added later.
 
 # Description
 
-**mangas-dl** is a command-line program to download manga scans from multiple websites ([list of websites taken in charge]()).
+**mangas-dl** is a command-line program to download manga scans from multiple websites ([list of websites taken in charge](https://github.com/Boubou0909/Mangas-dl#list-of-websites-staken-in-charge)).
 It requires a [Python interpreter](https://www.python.org/), and is not platform specific.
 It is released to the public domain, so you can use it, modify it, redistribute it however you want.
 
@@ -23,7 +23,7 @@ Nowadays, only the interactive mode works, but the one-line command will be adde
 
 In the interactive mode, you will have to answer questions to specify what you want to download exactly. To make the program understand your answers, make sure to use those formats :
 
-- **Manga's main page** : URL of the main page of the manga ([See this section for further informations]()).
+- **Manga's main page** : URL of the main page of the manga ([See this section for further informations](https://github.com/Boubou0909/Mangas-dl#example-of-mangas-main-page    )).
 - **Language** *optional* : Give the number correponding to the language you want to choose.
 - **Chapters to download** : Give the numbers of the first and the last chapters you want to download, separated by a dash. If you want to download several intervals, separate them by a slash. To download all chapters, you can enter just '*', '-1' or leave blank.
 - **Destination folder** : Give the absolute path to the folder where the scans will be located. A new folder will be created inside with the name of the manga.
@@ -31,15 +31,15 @@ In the interactive mode, you will have to answer questions to specify what you w
 
 # List of websites staken in charge
 
-- [https://mangadex.org/]()
-- [https://manganelo.tv/]()
+- https://mangadex.org/
+- https://manganelo.tv/
 
 # Examples
 
 ## Example of mangas' main page
 
-- mangadex.org : [https://mangadex.org/title/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0]()
-- manganelo.tv : [https://manganelo.tv/manga/manga-dr980474]()
+- mangadex.org : https://mangadex.org/title/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0
+- manganelo.tv : https://manganelo.tv/manga/manga-dr980474
 
 ## Example of interactive-mode command
 
