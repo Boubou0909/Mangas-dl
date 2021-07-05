@@ -31,7 +31,7 @@ In the interactive mode, you will have to answer questions to specify what you w
 
 # Examples
 
-    mangas-dl
+    > mangas-dl
     Enter the main page of the manga you want to download : https://mangadex.org/title/a96676e5-8ae2-425e-b549-7f15dd34a6d8
     17 languages have been found.
     0 -> Italian
