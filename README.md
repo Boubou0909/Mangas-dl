@@ -17,8 +17,6 @@ It is released to the public domain, so you can use it, modify it, redistribute 
 
     mangas-dl
 
-Nowadays, only the interactive mode works, but the one-line command will be added in the future.
-
 # One-line mode
 
 To launch the one-line mode, you have to run the command :
