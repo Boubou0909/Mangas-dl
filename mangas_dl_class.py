@@ -8,6 +8,7 @@ from Headers.functions_web import does_page_exists
 from Headers.errors import UnknownWebsiteError, InputError, OSError, ConnexionError
 from Headers.functions import ask_until_y_or_n
 from Headers.functions_os import is_path_exists_or_creatable
+from Headers.functions_formatting import str_to_chapters
 
 try:
     with open("websites_used.json") as file:
@@ -33,14 +34,14 @@ class Mangas_dl:
     def test_connexion(self):
         return does_page_exists(self.url)
 
-    def pre_download(self):
+    def pre_download(self, choosen_language = -1):
         if not self.site_name in KNOWN_WEBSITES:
             raise UnknownWebsiteError(self.site_name)
         
         if not does_page_exists(self.url):
             raise ConnexionError(self.url)
 
-        self.chapters, self.chapters_name, self.manga_name = getattr(pre_download_functions, LAUNCH_FUNCTIONS[self.site_name]["pre_download"])(self.url)
+        self.chapters, self.chapters_name, self.manga_name = getattr(pre_download_functions, LAUNCH_FUNCTIONS[self.site_name]["pre_download"])(self.url, choosen_language)
 
     def ask_chapters_to_download(self):
         if not hasattr(self, "chapters") or not hasattr(self, "chapters_name"):
@@ -49,51 +50,7 @@ class Mangas_dl:
         print(len(self.chapters), "chapters have been found (from " + self.chapters_name[0] + " to " + self.chapters_name[-1] + ").")
         chapters_asked = input('Which chapter(s) would you like to download ? ')
 
-        pre_chapter_asked = []
-        if chapters_asked in ['', '-1', '*']:
-            pre_chapter_asked = [(self.chapters[i], self.chapters_name[i]) for i in range(len(self.chapters))]
-        else:
-            try:
-                chapters_asked = str(float(chapters_asked))
-                i = self.chapters_name.index(chapters_asked)
-                pre_chapter_asked = [(self.chapters[i], self.chapters_name[i])]
-            except:
-                for list in chapters_asked.split('/'):
-                    try:
-                        begin, end = list.split('-')
-                    except:
-                        raise InputError()
-                    
-                    try:
-                        indice_begining = self.chapters_name.index(str(float(begin)))
-                        indice_ending = self.chapters_name.index(str(float(end)))
-                    except:
-                        pass
-
-                    try:
-                        indice_begining = self.chapters.index(begin)
-                        indice_ending = self.chapters.index(end)
-                    except:
-                        pass
-                    
-                    if not "indice_begining" in locals() or not "indice_ending" in locals():
-                        raise InputError("At least one of the chapter(s) asked doesn't exist.")
-
-                    if len(str(end).split('.')) > 1:
-                        k = 0.1
-                        while k < 1:
-                            try:
-                                indice_ending = self.chapters.index(str(float(end) + round(k,1)))
-                            except:
-                                pass
-                            
-                            k += 0.1
-
-                    for i in range(indice_begining, indice_ending + 1):
-                        pre_chapter_asked.append((self.chapters[i],self.chapters_name[i]))
-            
-        for i in range(len(pre_chapter_asked)):
-            self.chapters_asked.append((pre_chapter_asked[i][0], pre_chapter_asked[i][1]))
+        self.chapters_asked = str_to_chapters(self.chapters, self.chapters_name, chapters_asked)
 
     def ask_path(self):
         download_path = ''

@@ -13,7 +13,7 @@ try:
 except:
     raise FileNotFoundError("The file websites_used.json has not been found.\nPlease make sure it exists before lauching mangas-dl.")
 
-def manganelo_pre_download(url):
+def manganelo_pre_download(url, choosen_language):
     session = HTMLSession()
     r = session.get(url)
     manga_name = r.html.find('h1')[0].html[4:-5]
@@ -51,16 +51,16 @@ def manganelo_pre_download(url):
 
     return chapters, chapters_name, manga_name
 
-def mangadex_pre_download(url):
+def mangadex_pre_download(url, choosen_language = -1):
     mangadex_client = MangaDexPy.MangaDex()
     manga = mangadex_client.get_manga(url.split('/')[-1])
     all_languages_chapters = manga.get_chapters()
 
     available_languages = delete_duplicate([chp.language for chp in all_languages_chapters])
-    choosen_language = -1
+
     if len(available_languages) == 1:
         choosen_language = 0
-    else:
+    elif choosen_language == -1:
         print(len(available_languages), "languages have been found.")
         for i in range(len(available_languages)):
             try:
