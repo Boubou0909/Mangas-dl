@@ -19,7 +19,33 @@ It is released to the public domain, so you can use it, modify it, redistribute 
 
 Nowadays, only the interactive mode works, but the one-line command will be added in the future.
 
-# Answers format
+# One-line mode
+
+To launch the one-line mode, you have to run the command :
+    mangas-dl [OPTIONS] URL
+
+The only option to be filled in is the path where you want the scans to be saved.
+By default, all the chapters are downloaded and the default language is english.
+
+## Options
+    -h, --help                          Print help text and exit
+                                        <!-- To be added -->
+
+    --version                           Print the current version and exit
+                                        <!-- To be added -->
+    
+    -p, --path                          Path to the folder where the scans will be downloaded
+
+    -l, --language                      Choose the language with the language code (see the [language_codes.json](https://github.com/Boubou0909/Mangas-dl/blob/main/language_codes.json))
+    
+    -c, --chapters                      Choose which chapters will be downloaded (see the format [here](https://github.com/Boubou0909/Mangas-dl#answers-format))
+
+# Interactive mode
+
+To launch the interactive mode, you have to run the .exe file with the command :
+    mangas-dl
+
+## Answers format
 
 In the interactive mode, you will have to answer questions to specify what you want to download exactly. To make the program understand your answers, make sure to use those formats :
 

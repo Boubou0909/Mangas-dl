@@ -13,7 +13,7 @@ ARGS = sys.argv[1:]
 
 def main_one_line(argv):
     try:
-        opts, args = getopt.getopt(argv, "hl:c:o:", ["help", "language", "chapters", "output"])
+        opts, args = getopt.getopt(argv, "hl:c:p:", ["help", "language", "chapters", "path"])
     except getopt.GetoptError:
         print("#TODO")
         sys.exit(1)
@@ -28,7 +28,7 @@ def main_one_line(argv):
             language = arg
         elif opt in ("-c", "--chapters"):
             chapters_asked = arg
-        elif opt in ("-o", "--output"):
+        elif opt in ("-p", "--path"):
             if arg == "%":
                 try:
                     f = open("settings.json", "r")
