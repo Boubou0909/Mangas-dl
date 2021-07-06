@@ -1,4 +1,5 @@
 # pyinstaller --onefile run.py --copy-metadata pyppeteer
+import os
 import sys, getopt
 import json
 
@@ -57,7 +58,7 @@ def main_one_line(argv):
 
     mangas_dl.pre_download(choosen_language = language)
     mangas_dl.chapters_asked = str_to_chapters(mangas_dl.chapters, mangas_dl.chapters_name, chapters_asked)
-    mangas_dl.download_path = download_path
+    mangas_dl.download_path = download_path.rstrip(os.path.sep) + os.path.sep
 
     return mangas_dl.download_chapters()
 

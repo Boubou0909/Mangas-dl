@@ -16,7 +16,7 @@ def str_to_chapters(chapters, chapters_name, chapters_asked):
                 try:
                     begin, end = list.split('-')
                 except:
-                    raise InputError()
+                    raise InputError("The given format of chapters to download is not correct. Please check https://github.com/Boubou0909/Mangas-dl#answers-format.")
                 
                 try:
                     indice_begining = chapters_name.index(str(float(begin)))
