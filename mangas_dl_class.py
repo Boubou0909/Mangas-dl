@@ -53,40 +53,45 @@ class Mangas_dl:
         if chapters_asked in ['', '-1', '*']:
             pre_chapter_asked = [(self.chapters[i], self.chapters_name[i]) for i in range(len(self.chapters))]
         else:
-            for list in chapters_asked.split('/'):
-                try:
-                    begin, end = list.split('-')
-                except:
-                    raise InputError()
-                
-                try:
-                    indice_begining = self.chapters_name.index(begin)
-                    indice_ending = self.chapters_name.index(end)
-                except:
-                    pass
+            try:
+                chapters_asked = str(float(chapters_asked))
+                i = self.chapters_name.index(chapters_asked)
+                pre_chapter_asked = [(self.chapters[i], self.chapters_name[i])]
+            except:
+                for list in chapters_asked.split('/'):
+                    try:
+                        begin, end = list.split('-')
+                    except:
+                        raise InputError()
+                    
+                    try:
+                        indice_begining = self.chapters_name.index(str(float(begin)))
+                        indice_ending = self.chapters_name.index(str(float(end)))
+                    except:
+                        pass
 
-                try:
-                    indice_begining = self.chapters.index(begin)
-                    indice_ending = self.chapters.index(end)
-                except:
-                    pass
-                
-                if not "indice_begining" in locals() or not "indice_ending" in locals():
-                    raise InputError("At least one of the chapter(s) asked doesn't exist.")
+                    try:
+                        indice_begining = self.chapters.index(begin)
+                        indice_ending = self.chapters.index(end)
+                    except:
+                        pass
+                    
+                    if not "indice_begining" in locals() or not "indice_ending" in locals():
+                        raise InputError("At least one of the chapter(s) asked doesn't exist.")
 
-                if len(str(end).split('.')) > 1:
-                    k = 0.1
-                    while k < 1:
-                        try:
-                            indice_ending = self.chapters.index(str(float(end) + round(k,1)))
-                        except:
-                            pass
-                        
-                        k += 0.1
+                    if len(str(end).split('.')) > 1:
+                        k = 0.1
+                        while k < 1:
+                            try:
+                                indice_ending = self.chapters.index(str(float(end) + round(k,1)))
+                            except:
+                                pass
+                            
+                            k += 0.1
 
-                for i in range(indice_begining, indice_ending + 1):
-                    pre_chapter_asked.append((self.chapters[i],self.chapters_name[i]))
-        
+                    for i in range(indice_begining, indice_ending + 1):
+                        pre_chapter_asked.append((self.chapters[i],self.chapters_name[i]))
+            
         for i in range(len(pre_chapter_asked)):
             self.chapters_asked.append((pre_chapter_asked[i][0], pre_chapter_asked[i][1]))
 
