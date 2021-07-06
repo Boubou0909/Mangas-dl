@@ -36,9 +36,10 @@ By default, all the chapters are downloaded and the default language is english.
     
     -p, --path                          Path to the folder where the scans will be downloaded
 
-    -l, --language                      Choose the language with the language code (see the [language_codes.json](https://github.com/Boubou0909/Mangas-dl/blob/main/language_codes.json))
+    -l, --language                      Choose the language with the language code (see language_codes.json)
     
-    -c, --chapters                      Choose which chapters will be downloaded (see the format [here](https://github.com/Boubou0909/Mangas-dl#answers-format))
+    -c, --chapters                      Choose which chapters will be downloaded (see the format in
+                                        the interactive mode description)
 
 # Interactive mode
 
@@ -67,7 +68,11 @@ In the interactive mode, you will have to answer questions to specify what you w
 - mangadex.org : [https://mangadex.org/title/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0](https://mangadex.org/title/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0)
 - manganelo.tv : [https://manganelo.tv/manga/manga-dr980474](https://manganelo.tv/manga/manga-dr980474)
 
-## Example of interactive-mode command
+## Example of one-line mode command
+
+    mangas-dl -p C:\This\is\a\path -c 1-7 https://mangadex.org/title/a96676e5-8ae2-425e-b549-7f15dd34a6d8
+    
+## Example of interactive mode command
 
     > mangas-dl
     Enter the main page of the manga you want to download : https://mangadex.org/title/a96676e5-8ae2-425e-b549-7f15dd34a6d8
@@ -90,7 +95,7 @@ In the interactive mode, you will have to answer questions to specify what you w
     16 -> Romanian
     Choose a language (number) : 5
     192 chapters have been found (from 1.0 to 296.0).
-    Which chapter(s) would you like to download ? 1.0-7.0
+    Which chapter(s) would you like to download ? 1-7
     Destination folder : C:\Users\balth\Documents\Scans
     Do you want to save this path ? (Y/N) N
     Download finished successfully. Enjoy !
