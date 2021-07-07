@@ -1,6 +1,8 @@
 from setuptools import setup, find_packages
 import os
 
+__version__ = "0.2.3"
+
 with open("readme.md", "r") as f:
     readme = f.read()
 
@@ -8,7 +10,7 @@ requirements = ["requests-HTML>=0.10.0", "MangaDexPy>=0.3.2"]
 
 setup(
     name = "mangas-dl",
-    version = "0.2.2",
+    version = __version__,
     author = "Boubou0909",
     author_email = "balthazar0909@gmail.com",
     description = "Mangas' scans downloader app",

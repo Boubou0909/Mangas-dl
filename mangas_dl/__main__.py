@@ -8,13 +8,15 @@ from .Headers.errors import ConnexionError
 from .Headers.functions_formatting import str_to_chapters
 from .Headers.functions_os import is_path_exists_or_creatable
 
+__version__ = "0.2.3"
+
 ARGS = sys.argv[1:]
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 def main_one_line(argv):
     try:
-        opts, args = getopt.getopt(argv, "hl:c:p:", ["help", "language", "chapters", "path"])
+        opts, args = getopt.getopt(argv, "hvl:c:p:", ["help", "version", "language", "chapters", "path"])
     except getopt.GetoptError:
         print("#TODO")
         sys.exit(1)
@@ -23,7 +25,12 @@ def main_one_line(argv):
     chapters_asked = ""
     for opt, arg in opts:
         if opt in ("-h", "--help"):
-            print("#TODO")
+            f = open("README.md", "r")
+            print(f.read())
+            f.close()
+            sys.exit(0)
+        elif opt in ("-v", "--version"):
+            print("mangas-dl", __version__)
             sys.exit(0)
         elif opt in ("-l", "--language"):
             language = arg
