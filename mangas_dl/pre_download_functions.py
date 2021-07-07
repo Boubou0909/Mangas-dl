@@ -3,9 +3,9 @@ import json
 
 import MangaDexPy
 
-from Headers.functions_web import does_page_exists
-from Headers.errors import ConnexionError
-from Headers.functions import delete_non_numeric, delete_duplicate
+from .Headers.functions_web import does_page_exists
+from .Headers.errors import ConnexionError
+from .Headers.functions import delete_non_numeric, delete_duplicate
 
 try:
     with open("mangas_dl/language_codes.json") as file:

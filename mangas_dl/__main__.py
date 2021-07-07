@@ -1,13 +1,12 @@
-# pyinstaller --onefile run.py --copy-metadata pyppeteer
 import os
 import sys, getopt
 import json
 
-from mangas_dl_class import Mangas_dl
+from .mangas_dl_class import Mangas_dl
 
-from Headers.errors import ConnexionError
-from Headers.functions_formatting import str_to_chapters
-from Headers.functions_os import is_path_exists_or_creatable
+from .Headers.errors import ConnexionError
+from .Headers.functions_formatting import str_to_chapters
+from .Headers.functions_os import is_path_exists_or_creatable
 
 ARGS = sys.argv[1:]
 

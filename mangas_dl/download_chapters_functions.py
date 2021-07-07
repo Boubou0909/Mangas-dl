@@ -6,9 +6,9 @@ from PIL import Image
 
 from MangaDexPy import downloader
 
-from Headers.download_and_convert import convert_to_pdf, download_and_convert_to_pdf
-from Headers.functions import str_at_least_n
-from Headers.functions_os import enable_print, disable_print
+from .Headers.download_and_convert import convert_to_pdf, download_and_convert_to_pdf
+from .Headers.functions import str_at_least_n
+from .Headers.functions_os import enable_print, disable_print
 
 def download_manganelo_tv(url, chapters_asked, download_path, manga_name):
     if not os.path.exists(download_path + manga_name + os.path.sep):
