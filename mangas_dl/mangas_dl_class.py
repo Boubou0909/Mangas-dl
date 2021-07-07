@@ -1,8 +1,8 @@
 import json
 import os
 
-import pre_download_functions
-import download_chapters_functions
+from pre_download_functions import * 
+from download_chapters_functions import * 
 
 from Headers.functions_web import does_page_exists
 from Headers.errors import UnknownWebsiteError, InputError, OSError, ConnexionError
@@ -11,7 +11,7 @@ from Headers.functions_os import is_path_exists_or_creatable
 from Headers.functions_formatting import str_to_chapters
 
 try:
-    with open("websites_used.json") as file:
+    with open("mangas_dl/websites_used.json") as file:
         LAUNCH_FUNCTIONS = json.load(file)
         KNOWN_WEBSITES = LAUNCH_FUNCTIONS.keys()
 except:
@@ -41,7 +41,7 @@ class Mangas_dl:
         if not does_page_exists(self.url):
             raise ConnexionError(self.url)
 
-        self.chapters, self.chapters_name, self.manga_name = getattr(pre_download_functions, LAUNCH_FUNCTIONS[self.site_name]["pre_download"])(self.url, choosen_language)
+        self.chapters, self.chapters_name, self.manga_name = eval(LAUNCH_FUNCTIONS[self.site_name]["pre_download"] + "(self.url, choosen_language)")
 
     def ask_chapters_to_download(self):
         if not hasattr(self, "chapters") or not hasattr(self, "chapters_name"):
@@ -98,6 +98,6 @@ class Mangas_dl:
         if not hasattr(self, "chapters_asked") or not hasattr(self, "download_path"):
             raise Exception("No idea how you arrived here")
 
-        getattr(download_chapters_functions, LAUNCH_FUNCTIONS[self.site_name]["download_chapters"])(self.url, self.chapters_asked, self.download_path, self.manga_name)
+        eval(LAUNCH_FUNCTIONS[self.site_name]["download_chapters"] + "(self.url, self.chapters_asked, self.download_path, self.manga_name)")
 
         return "Download finished successfully. Enjoy !"

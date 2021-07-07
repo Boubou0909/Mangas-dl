@@ -8,7 +8,7 @@ from Headers.errors import ConnexionError
 from Headers.functions import delete_non_numeric, delete_duplicate
 
 try:
-    with open("language_codes.json") as file:
+    with open("mangas_dl/language_codes.json") as file:
         LANGUAGE_CODES = json.load(file)
 except:
     raise FileNotFoundError("The file websites_used.json has not been found.\nPlease make sure it exists before lauching mangas-dl.")

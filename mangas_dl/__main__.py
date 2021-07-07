@@ -11,6 +11,8 @@ from Headers.functions_os import is_path_exists_or_creatable
 
 ARGS = sys.argv[1:]
 
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+
 def main_one_line(argv):
     try:
         opts, args = getopt.getopt(argv, "hl:c:p:", ["help", "language", "chapters", "path"])
@@ -31,7 +33,7 @@ def main_one_line(argv):
         elif opt in ("-p", "--path"):
             if arg == "%":
                 try:
-                    f = open("settings.json", "r")
+                    f = open("mangas_dl/settings.json", "r")
                     settings = json.load(f)
                     f.close()
                     download_path = settings["remembered_path"]
@@ -73,7 +75,11 @@ def main_interactive(url):
 
     return mangas_dl.download_chapters()
 
-if len(ARGS) == 0:
-    print(main_interactive(input("Enter the main page of the manga you want to download : ")))
-else:
-    print(main_one_line(ARGS))
+def main():
+    if len(ARGS) == 0:
+        print(main_interactive(input("Enter the main page of the manga you want to download : ")))
+    else:
+        print(main_one_line(ARGS))
+
+if __name__ == "__main__":
+    main()
