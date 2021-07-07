@@ -6,7 +6,9 @@ The goal here is to let you download your favorite mangas from scan websites, an
 
 To install it, you must have a [Python interpreter](https://www.python.org/) installed, with a working pip.
 Then, you can use the pip command :
+
     pip install mangas-dl
+
 This command will update mangas-dl if you already have it. See the [PyPI page](https://pypi.org/project/mangas-dl/).
 
 Other ways of download are going to be added.
@@ -16,8 +18,6 @@ Other ways of download are going to be added.
 **mangas-dl** is a command-line program to download manga scans from multiple websites ([list of websites taken in charge](https://github.com/Boubou0909/Mangas-dl#list-of-websites-staken-in-charge)).
 It requires a [Python interpreter](https://www.python.org/), and is not platform specific.
 It is released to the public domain, so you can use it, modify it, redistribute it however you want.
-
-*If you redistribute it elsewhere, please credit this GitHub repository.*
 
     mangas-dl
 
