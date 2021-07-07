@@ -4,8 +4,12 @@ The goal here is to let you download your favorite mangas from scan websites, an
 
 # Installation
 
-To run it on every platform, you can compile mangas-dl.py with a Python interpreter.
-However, it's not convenient, so other ways of installation will be added later.
+To install it, you must have a [Python interpreter](https://www.python.org/) installed, with a working pip.
+Then, you can use the pip command :
+    pip install mangas-dl
+This command will update mangas-dl if you already have it. See the [PyPI page](https://pypi.org/project/mangas-dl/).
+
+Other ways of download are going to be added.
 
 # Description
 
@@ -27,10 +31,8 @@ By default, all the chapters are downloaded and the default language is english.
 
 ## Options
     -h, --help                          Print help text and exit
-                                        <!-- To be added -->
 
     --version                           Print the current version and exit
-                                        <!-- To be added -->
     
     -p, --path                          Path to the folder where the scans will be downloaded
 
