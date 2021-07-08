@@ -8,7 +8,7 @@ from .Headers.errors import ConnexionError
 from .Headers.functions_formatting import str_to_chapters
 from .Headers.functions_os import is_path_exists_or_creatable
 
-__version__ = "0.2.3"
+__version__ = "0.3.0"
 
 ARGS = sys.argv[1:]
 
