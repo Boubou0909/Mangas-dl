@@ -56,7 +56,20 @@ In the interactive mode, you will have to answer questions to specify what you w
 - **Destination folder** : Give the absolute path to the folder where the scans will be located. A new folder will be created inside with the name of the manga.
 - **Y/N questions** : Answer with 'Y'/'y'/1 or 'N'/'n'/0
 
-# List of websites staken in charge
+# Commands
+
+## Remember preferences 
+    save_path PATH                      Remember PATH to be the default folder where the scans 
+                                        will be downloaded
+
+    save_language LANGUAGE_CODE         Remember LANGUAGE_CODE to be the default language if a choice
+                                        is possible
+
+## Use remembered informations
+
+You can reuse remembered informations in one-line mode : instead of a path, you can write "%" if a path is remembered, and you can leave language blank if a choice is possible (english will be taken if the language is not available). 
+
+# List of websites taken in charge
 
 - [https://mangadex.org/](https://github.com/Boubou0909/Mangas-dl#list-of-websites-staken-in-charge)
 - [https://manganelo.tv/](https://manganelo.tv/)

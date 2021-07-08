@@ -60,7 +60,7 @@ class Mangas_dl:
 
         while not is_path_valid:
             try:
-                f = open('settings.json', 'r')
+                f = open('mangas_dl/settings.json', 'r')
                 settings = json.load(f)
                 f.close()
                 remembered_path = settings['remembered_path']
