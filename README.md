@@ -58,6 +58,9 @@ In the interactive mode, you will have to answer questions to specify what you w
 
 # Commands
 
+To launch a command, the general usage is :
+    mangas-dl <command> [OPTIONS]
+
 ## Remember preferences 
     save_path PATH                      Remember PATH to be the default folder where the scans 
                                         will be downloaded
@@ -111,4 +114,12 @@ You can reuse remembered informations in one-line mode : instead of a path, you 
     Which chapter(s) would you like to download ? 1-7
     Destination folder : C:\Users\balth\Documents\Scans
     Do you want to save this path ? (Y/N) N
+    Download finished successfully. Enjoy !
+
+## Example of save functions
+
+    > mangas-dl save_path C:/This/is/a/path
+    Path "C:/users/balth/Documents/Scans" learnt
+    
+    > mangas-dl -p % -c 1-2 https://mangadex.org/title/a96676e5-8ae2-425e-b549-7f15dd34a6d8
     Download finished successfully. Enjoy !

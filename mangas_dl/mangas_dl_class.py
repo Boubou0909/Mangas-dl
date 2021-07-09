@@ -15,7 +15,7 @@ try:
         LAUNCH_FUNCTIONS = json.load(file)
         KNOWN_WEBSITES = LAUNCH_FUNCTIONS.keys()
 except:
-    raise FileNotFoundError("The file websites_used.json has not been found.\nPlease make sure it exists before lauching mangas-dl.")
+    raise FileNotFoundError("The file websites_used.json has not been found. Please make sure it exists before lauching mangas-dl.")
 
 class Mangas_dl:
     def __init__(self, url):
@@ -74,7 +74,7 @@ class Mangas_dl:
                 download_path = input('Destination folder : ')
             
             if not is_path_exists_or_creatable(download_path):
-                raise OSError("The given path doesn\'t exists and is not creatable.")
+                raise OSError("The given path doesn't exists and is not creatable.")
 
             if not os.path.exists(download_path):
                 create_path = ask_until_y_or_n('The folder doesn\'t exist. Create it ?')

@@ -41,7 +41,7 @@ def main_one_line(argv):
                         with open("mangas_dl/language_codes.json") as file:
                             LANGUAGE_CODES = json.load(file)
                     except:
-                        raise FileNotFoundError("The file websites_used.json has not been found.\nPlease make sure it exists before lauching mangas-dl.")
+                        raise FileNotFoundError("The file websites_used.json has not been found. Please make sure it exists before lauching mangas-dl.")
                     if not argv[1] in LANGUAGE_CODES.keys():
                         print("The given language is not taken in charge. Please read the complete list here : https://github.com/Boubou0909/Mangas-dl/blob/main/mangas_dl/language_codes.json")
                         sys.exit(1)
@@ -73,10 +73,9 @@ def main_one_line(argv):
     
     chapters_asked = ""
     for opt, arg in opts:
-        if opt in ("-h", "--help"): #TODO create proprer HELP file
-            f = open("README.md", "r")
-            text = f.read()
-            print(text[:text.index("# List of websites taken in charge")])
+        if opt in ("-h", "--help"):
+            f = open("mangas_dl/HELP.md", "r")
+            print(f.read())
             f.close()
             sys.exit(0)
         elif opt in ("-v", "--version"):
@@ -116,6 +115,7 @@ def main_one_line(argv):
 
     mangas_dl.pre_download(choosen_language = language)
     if len(mangas_dl.chapters) == 0:
+        print("The remembered language is not available for this scan. English will be used instead.")
         mangas_dl.pre_download(choosen_language = "en")
 
     mangas_dl.chapters_asked = str_to_chapters(mangas_dl.chapters, mangas_dl.chapters_name, chapters_asked)
