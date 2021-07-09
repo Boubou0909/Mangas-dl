@@ -8,7 +8,7 @@ from .Headers.errors import ConnexionError
 from .Headers.functions_formatting import str_to_chapters
 from .Headers.functions_os import is_path_exists_or_creatable
 
-__version__ = "0.3.3"
+__version__ = "0.4.0"
 
 ARGS = sys.argv[1:]
 
@@ -16,7 +16,7 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 def main_one_line(argv):
     try:
-        opts, args = getopt.getopt(argv, "hvl:c:p:", ["help", "version", "language", "chapters", "path"])
+        opts, args = getopt.getopt(argv, "hvl:c:p:", ["help", "version", "language", "chapters", "path", "list"])
     except getopt.GetoptError:
         print("\nUsage:\n\tmangas-dl [options] URL")
         print("or:\n\tmangas-dl <command> [options]")
@@ -72,6 +72,7 @@ def main_one_line(argv):
         language = "en"
     
     chapters_asked = ""
+    listing = False
     for opt, arg in opts:
         if opt in ("-h", "--help"):
             f = open("mangas_dl/HELP.md", "r")
@@ -99,11 +100,13 @@ def main_one_line(argv):
             else:
                 print("The given path does not exist and is not creatable. Please try again.")
                 sys.exit(1)
+        elif opt in ("--list"):
+            listing = True
     
     if len(args) != 1:
         print("Please enter only one url at time.")
         sys.exit(1)
-    elif not "download_path" in locals():
+    elif not "download_path" in locals() and not listing:
         print("Please enter a path where scans will be saved.")
         sys.exit(1)
 
@@ -117,6 +120,17 @@ def main_one_line(argv):
     if len(mangas_dl.chapters) == 0:
         print("The remembered language is not available for this scan. English will be used instead.")
         mangas_dl.pre_download(choosen_language = "en")
+
+    if listing:
+        try:
+            for i in range(len(mangas_dl.chapters) // 10 + 1):
+                for j in range(10):
+                    print(mangas_dl.chapters_name[10 * i + j], end="  ")
+                print("")
+        except:
+            pass
+        finally:
+            sys.exit(0)
 
     mangas_dl.chapters_asked = str_to_chapters(mangas_dl.chapters, mangas_dl.chapters_name, chapters_asked)
     mangas_dl.download_path = download_path.rstrip(os.path.sep) + os.path.sep
