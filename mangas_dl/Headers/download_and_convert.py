@@ -1,6 +1,5 @@
 import os
 from shutil import rmtree
-from MangaDexPy import downloader
 from PIL import Image
 
 from .functions_web import download_image

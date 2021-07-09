@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
-__version__ = "0.2.3"
+__version__ = "0.3.1"
 
 with open("readme.md", "r") as f:
     readme = f.read()
 
-requirements = ["requests-HTML>=0.10.0", "MangaDexPy>=0.3.2"]
+requirements = ["requests-HTML>=0.10.0", "MangaDex.py>=2.0.6"]
 
 setup(
     name = "mangas-dl",
