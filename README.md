@@ -74,7 +74,7 @@ You can reuse remembered informations in one-line mode : instead of a path, you 
 
 # List of websites taken in charge
 
-- [https://mangadex.org/](https://github.com/Boubou0909/Mangas-dl#list-of-websites-staken-in-charge)
+- [https://mangadex.org/](https://mangadex.org/)
 - [https://manganelo.tv/](https://manganelo.tv/)
 
 # Examples
@@ -123,3 +123,13 @@ You can reuse remembered informations in one-line mode : instead of a path, you 
     
     > mangas-dl -p % -c 1-2 https://mangadex.org/title/a96676e5-8ae2-425e-b549-7f15dd34a6d8
     Download finished successfully. Enjoy !
+
+# FAQ
+
+## Why is mangadex taking so much time compared to manganelo ?
+
+The implementation of [https://mangadex.org/](https://mangadex.org/) is made with [mangadex's API](https://api.mangadex.org/docs.html) with the [python package MangaDex.py](https://github.com/Proxymiity/MangaDex.py). This is necessary because of the anti-DDOS system. Thus, web-scraping is impossible because it is too fast for the website (it will understand that you're using a bot). However, manganelo.tv : [https://manganelo.tv/manga/manga-dr980474](https://manganelo.tv/manga/manga-dr980474) doesn't have such system, so web scraping is possible, and is much faster.
+
+## Will other websites be implemented in the future ?
+
+Of course : the final goal is that everyone can download their mangas wherever they want, so if you have a website you would like to be added to this project (and if it's enough important to be really useful to other people), I will try to add it to this project.
