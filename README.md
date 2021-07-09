@@ -52,7 +52,7 @@ In the interactive mode, you will have to answer questions to specify what you w
 
 - **Manga's main page** : URL of the main page of the manga ([See this section for further informations](https://github.com/Boubou0909/Mangas-dl#example-of-mangas-main-page)).
 - **Language** *optional* : Give the number correponding to the language you want to choose.
-- **Chapters to download** : Give the numbers of the first and the last chapters you want to download, separated by a dash. If you want to download several intervals, separate them by a slash. To download all chapters, you can enter just '*', '-1' or leave blank.
+- **Chapters to download** : Give the numbers of the first and the last chapters you want to download, separated by a dash. If you want to download several intervals, separate them by a slash. If the number of the first and the last chapters are integers, you can write them normally. If not, you have to specify with float numbers. To download all chapters, you can enter just '*', '-1' or leave blank. Moreover, you can tap "list" to have the complete list of the chapters that have been found, then the program will reask you the same question ("list" option won't be available the second time).
 - **Destination folder** : Give the absolute path to the folder where the scans will be located. A new folder will be created inside with the name of the manga.
 - **Y/N questions** : Answer with 'Y'/'y'/1 or 'N'/'n'/0
 
@@ -86,7 +86,7 @@ You can reuse remembered informations in one-line mode : instead of a path, you 
 
 ## Example of one-line mode command
 
-    mangas-dl -p C:\This\is\a\path -c 1-7 https://mangadex.org/title/a96676e5-8ae2-425e-b549-7f15dd34a6d8
+    > mangas-dl -p C:\This\is\a\path -c 1-7 https://mangadex.org/title/a96676e5-8ae2-425e-b549-7f15dd34a6d8
     
 ## Example of interactive mode command
 
@@ -114,6 +114,33 @@ You can reuse remembered informations in one-line mode : instead of a path, you 
     Which chapter(s) would you like to download ? 1-7
     Destination folder : C:\Users\balth\Documents\Scans
     Do you want to save this path ? (Y/N) N
+    Download finished successfully. Enjoy !
+
+## Example of a command using listing of all chpaters
+
+    > mangas-dl
+    Enter the main page of the manga you want to download : https://manganelo.tv/manga/manga-dr980474
+    162 chapters have been found (from 000.0 to 157.0).
+    Which chapter(s) would you like to download ? list       
+    000.0  001.0  002.0  003.0  004.0  005.0  006.0  007.0  008.0  009.0  
+    010.0  011.0  012.0  013.0  014.0  015.0  016.0  017.0  018.0  019.0
+    020.0  021.0  022.0  023.0  024.0  025.0  026.0  027.0  028.0  029.0
+    030.0  031.0  032.0  033.0  034.0  035.0  036.0  037.0  038.0  039.0
+    040.0  041.0  042.0  043.0  044.0  045.0  046.0  047.0  048.0  049.0
+    050.0  051.0  052.0  053.0  054.0  055.0  056.0  057.0  058.0  059.0
+    060.0  061.0  062.0  063.0  064.0  065.0  066.0  067.0  068.0  069.0
+    070.0  071.0  072.0  073.0  074.0  075.0  076.0  077.0  078.0  079.0
+    080.0  081.0  082.0  083.0  084.0  085.0  086.0  087.0  088.0  089.0  
+    090.0  090.1  090.2  091.0  092.0  093.0  094.0  095.0  096.0  097.0
+    098.0  099.0  100.0  101.0  102.0  103.0  104.0  105.0  106.0  107.0
+    108.0  109.0  110.0  110.5  111.0  112.0  113.0  114.0  115.0  116.0
+    117.0  118.0  119.0  120.0  121.0  122.0  123.0  124.0  125.0  126.0
+    127.0  128.0  129.0  129.1  130.0  131.0  132.0  133.0  134.0  135.0
+    136.0  137.0  138.0  139.0  140.0  141.0  142.0  143.0  144.0  145.0
+    146.0  147.0  148.0  149.0  150.0  151.0  152.0  153.0  154.0  155.0
+    156.0  157.0  156.0  157.0
+    Which chapter(s) would you like to download ? 0-5                                      
+    The path "C:/users/balth/Documents/Scans" is known. Do you want to use it ? (Y/N) Y
     Download finished successfully. Enjoy !
 
 ## Example of save functions

@@ -50,6 +50,16 @@ class Mangas_dl:
         print(len(self.chapters), "chapters have been found (from " + self.chapters_name[0] + " to " + self.chapters_name[-1] + ").")
         chapters_asked = input('Which chapter(s) would you like to download ? ')
 
+        if chapters_asked in ("list", "List", "LIST"):
+            try:
+                for i in range(len(self.chapters) // 10 + 1):
+                    for j in range(10):
+                        print(self.chapters_name[10 * i + j], end="  ")
+                    print("")
+            except:
+                print("  ".join(self.chapters_name[10 * (len(self.chapters_name) // 10):]))
+            finally:
+                chapters_asked = input('Which chapter(s) would you like to download ? ')
         self.chapters_asked = str_to_chapters(self.chapters, self.chapters_name, chapters_asked)
 
     def ask_path(self):
