@@ -13,5 +13,10 @@
     {
         "pre_download" : "mangadex_pre_download",
         "download_chapters" : "download_mangadex_org"
+    },
+    "cubari.moe" :
+    {
+        "pre_download" : "cubari_pre_download",
+        "download_chapters" : "download_cubari_moe"        
     }
 }

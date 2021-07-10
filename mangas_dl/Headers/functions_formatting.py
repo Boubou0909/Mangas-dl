@@ -1,4 +1,5 @@
 from .errors import InputError
+from .functions import str_at_least_n
 
 def str_to_chapters(chapters, chapters_name, chapters_asked):
     
@@ -8,7 +9,7 @@ def str_to_chapters(chapters, chapters_name, chapters_asked):
         pre_chapter_asked = [(chapters[i], chapters_name[i]) for i in range(len(chapters))]
     else:
         try:
-            chapters_asked = str(float(chapters_asked))
+            chapters_asked = str_at_least_n(str(float(chapters_asked)), len(chapters_name[0]))
             i = chapters_name.index(chapters_asked)
             pre_chapter_asked = [(chapters[i], chapters_name[i])]
         except:
@@ -19,18 +20,9 @@ def str_to_chapters(chapters, chapters_name, chapters_asked):
                     raise InputError("The given format of chapters to download is not correct. Please check https://github.com/Boubou0909/Mangas-dl#answers-format.")
                 
                 try:
-                    indice_begining = chapters_name.index(str(float(begin)))
-                    indice_ending = chapters_name.index(str(float(end)))
+                    indice_begining = chapters_name.index(str_at_least_n(str(float(begin)), len(chapters_name[0])))
+                    indice_ending = chapters_name.index(str_at_least_n(str(float(end)), len(chapters_name[0])))
                 except:
-                    pass
-
-                try:
-                    indice_begining = chapters.index(begin)
-                    indice_ending = chapters.index(end)
-                except:
-                    pass
-                
-                if not "indice_begining" in locals() or not "indice_ending" in locals():
                     raise InputError("At least one of the chapter(s) asked doesn't exist.")
 
                 if len(str(end).split('.')) > 1:

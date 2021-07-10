@@ -4,8 +4,8 @@ import json
 import MangaDexPy
 
 from .Headers.functions_web import does_page_exists
-from .Headers.errors import ConnexionError
-from .Headers.functions import delete_non_numeric, delete_duplicate
+from .Headers.errors import ConnexionError, UnknownWebsiteError
+from .Headers.functions import delete_non_numeric, delete_duplicate, str_at_least_n
 
 try:
     with open("mangas_dl/language_codes.json") as file:
@@ -46,8 +46,7 @@ def manganelo_pre_download(url, choosen_language):
 
         if not '.' in chapters_name[-1]:
             chapters_name[-1] += '.0'
-        while len(chapters_name[-1]) < 5:
-            chapters_name[-1] = '0' + chapters_name[-1]
+        chapters_name[-1] = str_at_least_n(chapters_name[-1], 5)
 
     return chapters, chapters_name, manga_name
 
@@ -94,3 +93,32 @@ def mangadex_pre_download(url, choosen_language = -1):
     chapters_name = list(map(str, list(sorted(map(float, chapters_name)))))
 
     return chapters, chapters_name, manga.title["en"]
+
+def cubari_pre_download(url, choosen_language):
+    session = HTMLSession()
+    r = session.get(url)
+
+    manga_name = r.html.find('h1')[0].html[4:-5]
+    type = url.split("/")[4]
+
+    if type == "gist":
+        r = session.get("https://git.io/" + url.split("/")[5])
+        manga = eval(r.text)
+
+        chapters = []
+        chapters_name = []
+        
+        for chp in manga["chapters"].keys():
+            chapters.append(list(manga["chapters"][chp]["groups"].values())[0].split("/")[-2])
+
+            chapters_name.append(chp)
+            if not '.' in chapters_name[-1]:
+                chapters_name[-1] += '.0'
+            chapters_name[-1] = str_at_least_n(chapters_name[-1], 5)
+    elif type == "imgur":
+        chapters = [url.split("/")[-2]]
+        chapters_name = [manga_name]
+    else:
+        raise UnknownWebsiteError(url)
+
+    return chapters, chapters_name, manga_name
