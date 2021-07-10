@@ -41,6 +41,11 @@ By default, all the chapters are downloaded and the default language is english.
     -c, --chapters                      Choose which chapters will be downloaded (see the format in
                                         the interactive mode description)
 
+    -n, --name                          Change the name of the final folder (where the chapter(s) 
+                                        will be downloaded). If not specified, an automatic one will
+                                        be used (the one available on the main page given). Put the name in 
+                                        quotes if it has more than one word.
+
     --list                              Print the complete list of available chapters with the settings
                                         (path not necessary) without download them. Relaunch another 
                                         command to download choosen ones.
@@ -57,6 +62,7 @@ In the interactive mode, you will have to answer questions to specify what you w
 - **Manga's main page** : URL of the main page of the manga ([See this section for further informations](https://github.com/Boubou0909/Mangas-dl#example-of-mangas-main-page)).
 - **Language** *optional* : Give the number correponding to the language you want to choose.
 - **Chapters to download** : Give the numbers of the first and the last chapters you want to download, separated by a dash. If you want to download several intervals, separate them by a slash. If the number of the first and the last chapters are integers, you can write them normally. If not, you have to specify with float numbers. To download all chapters, you can enter just '*', '-1' or leave blank. Moreover, you can tap "list" to have the complete list of the chapters that have been found, then the program will reask you the same question ("list" option won't be available the second time).
+- **Name of the final folder** : Name of new folder where the chapter(s) will be downloaded. To make it automatic, you can leave this field blank.
 - **Destination folder** : Give the absolute path to the folder where the scans will be located. A new folder will be created inside with the name of the manga.
 - **Y/N questions** : Answer with 'Y'/'y'/1 or 'N'/'n'/0
 
@@ -80,6 +86,7 @@ You can reuse remembered informations in one-line mode : instead of a path, you 
 
 - [https://mangadex.org/](https://mangadex.org/)
 - [https://manganelo.tv/](https://manganelo.tv/)
+- [https://cubari.moe/](https://cubari.moe/)
 
 # Examples
 
@@ -87,11 +94,15 @@ You can reuse remembered informations in one-line mode : instead of a path, you 
 
 - mangadex.org : [https://mangadex.org/title/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0](https://mangadex.org/title/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0)
 - manganelo.tv : [https://manganelo.tv/manga/manga-dr980474](https://manganelo.tv/manga/manga-dr980474)
+- cubari.moe (several chapters): [https://cubari.moe/read/gist/JO7JN/](https://cubari.moe/read/gist/JO7JN/)
+- cubari.moe (one chapter) : [https://cubari.moe/read/imgur/Xo1KODZ/](https://cubari.moe/read/imgur/Xo1KODZ/)
 
-## Example of one-line mode command
+## Examples of one-line mode command
 
     > mangas-dl -p C:\This\is\a\path -c 1-7 https://mangadex.org/title/a96676e5-8ae2-425e-b549-7f15dd34a6d8
     
+    > mangas-dl -n "Kumo desu ga !" -p % -l nl https://mangadex.org/title/eb2d1a45-d4e7-4e32-a171-b5b029c5b0cb
+
 ## Example of interactive mode command
 
     > mangas-dl
@@ -145,6 +156,7 @@ You can reuse remembered informations in one-line mode : instead of a path, you 
     156.0  157.0  156.0  157.0
     Which chapter(s) would you like to download ? 0-5                                      
     The path "C:/users/balth/Documents/Scans" is known. Do you want to use it ? (Y/N) Y
+    Name of the final folder : Leveling alone
     Download finished successfully. Enjoy !
 
 ## Example of a one-line listing command

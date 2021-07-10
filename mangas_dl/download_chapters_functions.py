@@ -23,18 +23,18 @@ def download_manganelo_tv(url, chapters_asked, download_path, manga_name):
     url_chapter[-3] = 'chapter'
     url_chapter = '/'.join(url_chapter)
 
-    for chp_nb in chapters_asked:
+    for chp_src, chp_nb in chapters_asked:
         sys.stdout.write('\033[K')
-        print('Loading chapter ', chp_nb[0], end='\r')
+        print('Loading chapter ', chp_src, end='\r')
 
         if not os.path.exists(download_path + 'temp' + os.path.sep):
             os.makedirs(download_path + 'temp' + os.path.sep)
         
-        r = session.get(url_chapter + chp_nb[0])
+        r = session.get(url_chapter + chp_src)
         images = r.html.find('.img-loading')
-        src = [images[i].attrs['data-src'] for i in range(len(images))]
+        srcs = [images[i].attrs['data-src'] for i in range(len(images))]
 
-        download_and_convert_to_pdf(src, download_path, chp_nb)
+        download_and_convert_to_pdf(srcs, download_path, chp_nb)
 
 def download_manganelo_com(url, chapters_asked, download_path, manga_name):
     if not os.path.exists(download_path + manga_name + os.path.sep):
