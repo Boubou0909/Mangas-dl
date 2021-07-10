@@ -16,7 +16,7 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 def main_one_line(argv):
     try:
-        opts, args = getopt.getopt(argv, "hvl:c:p:", ["help", "version", "language", "chapters", "path", "list"])
+        opts, args = getopt.getopt(argv, "hvl:c:p:n:", ["help", "version", "language", "chapters", "path", "list", "name"])
     except getopt.GetoptError:
         print("\nUsage:\n\tmangas-dl [options] URL")
         print("or:\n\tmangas-dl <command> [options]")
@@ -73,6 +73,7 @@ def main_one_line(argv):
     
     chapters_asked = ""
     listing = False
+    manga_name = ""
     for opt, arg in opts:
         if opt in ("-h", "--help"):
             f = open("mangas_dl/HELP.md", "r")
@@ -102,6 +103,8 @@ def main_one_line(argv):
                 sys.exit(1)
         elif opt in ("--list"):
             listing = True
+        elif opt in ("-n", "--name"):
+            manga_name = arg
     
     if len(args) != 1:
         print("Please enter only one url at time.")
@@ -131,6 +134,9 @@ def main_one_line(argv):
             pass
         finally:
             sys.exit(0)
+
+    if manga_name != "":
+        mangas_dl.manga_name = manga_name
 
     mangas_dl.chapters_asked = str_to_chapters(mangas_dl.chapters, mangas_dl.chapters_name, chapters_asked)
     mangas_dl.download_path = download_path.rstrip(os.path.sep) + os.path.sep

@@ -104,6 +104,10 @@ class Mangas_dl:
 
         self.download_path = download_path.rstrip(os.path.sep) + os.path.sep
 
+        manga_name = input("Name of the final folder : ")
+        if manga_name != "":
+            self.manga_name = manga_name
+
     def download_chapters(self):
         if not hasattr(self, "chapters_asked") or not hasattr(self, "download_path"):
             raise Exception("No idea how you arrived here")
