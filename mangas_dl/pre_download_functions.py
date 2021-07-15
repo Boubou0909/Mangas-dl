@@ -11,7 +11,7 @@ try:
     with open("mangas_dl/language_codes.json") as file:
         LANGUAGE_CODES = json.load(file)
 except:
-    raise FileNotFoundError("The file websites_used.json has not been found. Please make sure it exists before lauching mangas-dl.")
+    raise FileNotFoundError("The file language_codes.json has not been found. Please make sure it exists before lauching mangas-dl.")
 
 def manganelo_pre_download(url, choosen_language):
     session = HTMLSession()
