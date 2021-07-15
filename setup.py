@@ -16,7 +16,7 @@ setup(
     long_description = readme,
     long_description_content_type = "text/markdown",
     url = "https://github.com/Boubou0909/Mangas-dl",
-    packages = find_packages() + ["mangas_dl/websites_used.json", "mangas_dl/HELP.md", "mangas_dl/language_codes.json", "settings.json"],
+    packages = find_packages(),
     install_requires = requirements,
     entry_points = '''
         [console_scripts]
