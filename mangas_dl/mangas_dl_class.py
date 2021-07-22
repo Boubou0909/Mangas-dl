@@ -10,7 +10,7 @@ from .Headers.functions import ask_until_y_or_n
 from .Headers.functions_os import is_path_exists_or_creatable
 from .Headers.functions_formatting import str_to_chapters
 
-PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1]) + os.path.sep
+PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-2]) + os.path.sep
 
 try:
     with open(PATH + "mangas_dl/websites_used.json") as file:
