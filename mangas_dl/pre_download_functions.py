@@ -1,3 +1,4 @@
+import os
 from requests_html import HTMLSession
 import json
 
@@ -7,10 +8,13 @@ from .Headers.functions_web import does_page_exists
 from .Headers.errors import ConnexionError, UnknownWebsiteError
 from .Headers.functions import delete_non_numeric, delete_duplicate, str_at_least_n
 
+PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1]) + os.path.sep
+
 try:
-    with open("mangas_dl/language_codes.json") as file:
+    with open(PATH + "mangas_dl/language_codes.json") as file:
         LANGUAGE_CODES = json.load(file)
 except:
+    print(PATH + "mangas_dl/language_codes.json")
     raise FileNotFoundError("The file language_codes.json has not been found. Please make sure it exists before lauching mangas-dl.")
 
 def manganelo_pre_download(url, choosen_language):

@@ -8,9 +8,10 @@ from .Headers.errors import ConnexionError
 from .Headers.functions_formatting import str_to_chapters
 from .Headers.functions_os import is_path_exists_or_creatable
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 ARGS = sys.argv[1:]
+PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1]) + os.path.sep
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
@@ -38,7 +39,7 @@ def main_one_line(argv):
                     print("Path \"" + argv[1] + "\" learnt")
                 elif argv[0] == "save_language":
                     try:
-                        with open("mangas_dl/language_codes.json") as file:
+                        with open(PATH + "mangas_dl/language_codes.json") as file:
                             LANGUAGE_CODES = json.load(file)
                     except:
                         raise FileNotFoundError("The file websites_used.json has not been found. Please make sure it exists before lauching mangas-dl.")
@@ -76,7 +77,7 @@ def main_one_line(argv):
     manga_name = ""
     for opt, arg in opts:
         if opt in ("-h", "--help"):
-            f = open("mangas_dl/HELP.md", "r")
+            f = open(PATH + "mangas_dl/HELP.md", "r")
             print(f.read())
             f.close()
             sys.exit(0)
@@ -90,7 +91,7 @@ def main_one_line(argv):
         elif opt in ("-p", "--path"):
             if arg == "%":
                 try:
-                    f = open("mangas_dl/settings.json", "r")
+                    f = open(PATH + "mangas_dl/settings.json", "r")
                     settings = json.load(f)
                     f.close()
                     download_path = settings["remembered_path"]

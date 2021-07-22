@@ -10,8 +10,10 @@ from .Headers.functions import ask_until_y_or_n
 from .Headers.functions_os import is_path_exists_or_creatable
 from .Headers.functions_formatting import str_to_chapters
 
+PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1]) + os.path.sep
+
 try:
-    with open("mangas_dl/websites_used.json") as file:
+    with open(PATH + "mangas_dl/websites_used.json") as file:
         LAUNCH_FUNCTIONS = json.load(file)
         KNOWN_WEBSITES = LAUNCH_FUNCTIONS.keys()
 except:

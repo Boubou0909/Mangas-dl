@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 with open("readme.md", "r") as f:
     readme = f.read()
@@ -16,9 +16,8 @@ setup(
     long_description = readme,
     long_description_content_type = "text/markdown",
     url = "https://github.com/Boubou0909/Mangas-dl",
-    packages = find_packages(),
-    package_data = {"": ["mangas_dl/HELP.md", "mangas_dl/conf.ini", "mangas_dl/language_codes.json", "mangas_dl/settings.json", "mangas_dl/websites_used.json"]},
-    include_package_data = True,
+    packages = find_packages(include=["mangas_dl.*"]),
+    data_files = [("mangas_dl", ["mangas_dl/HELP.md", "mangas_dl/conf.ini", "mangas_dl/language_codes.json", "mangas_dl/settings.json", "mangas_dl/websites_used.json"])],
     install_requires = requirements,
     entry_points = '''
         [console_scripts]
