@@ -1,14 +1,14 @@
 import json
 import os
 
-from .pre_download_functions import * 
-from .download_chapters_functions import * 
+from pre_download_functions import * 
+from download_chapters_functions import * 
 
-from .Headers.functions_web import does_page_exists
-from .Headers.errors import UnknownWebsiteError, OSError, ConnexionError
-from .Headers.functions import ask_until_y_or_n
-from .Headers.functions_os import is_path_exists_or_creatable
-from .Headers.functions_formatting import str_to_chapters
+from Headers.functions_web import does_page_exists
+from Headers.errors import UnknownWebsiteError, OSError, ConnexionError
+from Headers.functions import ask_until_y_or_n
+from Headers.functions_os import is_path_exists_or_creatable
+from Headers.functions_formatting import str_to_chapters
 
 PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-2]) + os.path.sep
 

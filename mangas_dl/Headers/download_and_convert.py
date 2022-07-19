@@ -2,7 +2,7 @@ import os
 from shutil import rmtree
 from PIL import Image
 
-from .functions_web import download_image
+from Headers.functions_web import download_image
 
 def convert_to_pdf(img_list, download_path):
     if len(img_list) > 0:

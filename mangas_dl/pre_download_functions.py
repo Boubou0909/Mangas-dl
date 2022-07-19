@@ -4,9 +4,9 @@ import json
 
 import MangaDexPy
 
-from .Headers.functions_web import does_page_exists
-from .Headers.errors import ConnexionError, UnknownWebsiteError
-from .Headers.functions import delete_non_numeric, delete_duplicate, str_at_least_n
+from Headers.functions_web import does_page_exists
+from Headers.errors import ConnexionError, UnknownWebsiteError
+from Headers.functions import delete_non_numeric, delete_duplicate, str_at_least_n
 
 PATH = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-2]) + os.path.sep
 

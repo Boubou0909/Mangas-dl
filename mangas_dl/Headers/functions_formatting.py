@@ -1,5 +1,5 @@
-from .errors import InputError
-from .functions import str_at_least_n
+from Headers.errors import InputError
+from Headers.functions import str_at_least_n
 
 def str_to_chapters(chapters, chapters_name, chapters_asked):
     
